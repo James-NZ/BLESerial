@@ -19,13 +19,11 @@ class BLESerialServerCallbacks: public BLEServerCallbacks {
     BLESerial* bleSerial;
     
     void onConnect(BLEServer* pServer) {
-        // do anything needed on connection
-        delay(1000); // wait for connection to complete or messages can be lost
-    };
+        Serial.println("Client connected");
+        pServer->startAdvertising();
+    }
 
     void onDisconnect(BLEServer* pServer) {
-        pServer->startAdvertising(); // restart advertising
-        Serial.println("Started advertising");
     }
 };
 
